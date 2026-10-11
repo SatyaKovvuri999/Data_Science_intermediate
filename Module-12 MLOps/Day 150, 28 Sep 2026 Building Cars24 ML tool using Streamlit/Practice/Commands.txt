@@ -9,3 +9,11 @@ streamlit hello
 streamlit run yourscript.py
 
 pip install yfinance
+
+pip install joblib
+
+pip install scikit-learn
+
+pip freeze > requirements.txt
+
+pip install -r requirements.txt
