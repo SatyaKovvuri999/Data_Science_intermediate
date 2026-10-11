@@ -1,0 +1,130 @@
+<div class="hv-resizable__section" style="width: 360px;"><div class="layout"><div class="cr-problem-tab layout__content"><div class="cr-diagram-editor-timeline p-10"><li class="tappable cr-diagram-editor-timeline-item cr-diagram-editor-timeline-item--active bold">Submit Solution</li><li class="tappable cr-diagram-editor-timeline-item">Evaluation</li><div data-testid="backdrop" class="sr-backdrop"></div><div class="sr-modal dialog cr-crowd-judge-dialog"><div class="sr-modal__body"><div class="dialog__body"></div><div class="dialog__actions"><a class="tappable btn btn-outlined dialog__action"></a><a class="tappable btn dialog__action"></a></div></div></div></div><div class="cr-p-heading space-between"><div class="cr-p-heading__text"><span>Q1. Business Case: Scaler - Clustering</span><i class="cr-icon-project m-l-10"></i><span class="status-tag-2 status-tag-2--attention flex-jc m-l-10 status-tag-2--small"><i class="cr-icon-pending status-tag-2__icon status-tag-2__icon--left"></i>Unsolved</span></div><a class="tappable btn btn-inverted cr-p-heading__action"><i class="icon-bookmark-outline cr-bookmark-icon"></i></a></div><div class="cr-p-tags p-h-10 p-v-5"></div><div><div class="cr-project-cd-container cr-project-cd-container--problem"><div class="cr-project-cd-wrapper"><span class="cr-project-cd-wrapper__deadline-text">Deadline for the Business Case :</span><div class="cr-project-cd-container__count-down"><div><span>23</span><span>h</span></div><div><span>55</span><span>m</span></div><div><span>33</span><span>s</span></div></div></div></div><div class="m-10"><div class="cr-feature-banner"><div class="cr-feature-banner__icon-wrap"><img src="https://assets-v2.scaler.com/packs/images/bulb.b38ad6.svg" alt="feature icon"></div><div class="cr-feature-banner__body"><div class="cr-feature-banner__body-text">Using hints except Complete Solution is Penalty free now</div><div class="cr-feature-banner__btn-wrap"><a class="tappable cr-feature-banner__btn" href="/academy/mentee-dashboard/class/529778/project/problems/19753/hints?navref=cl_pb_nv_tb">Use Hint</a></div></div></div></div><div><div class="html-content"><div class="html-content__container cr-p-statement"><p><strong>Mindset</strong></p>
+<ol>
+<li>Evaluation will be kept lenient, so make sure you attempt this case study.</li>
+<li>It is understandable that you might struggle with getting started on this. Just brainstorm, discuss with peers, or get help from TAs.</li>
+<li>There is no right or wrong answer. We have to become comfortable with dealing with uncertainty in business. This is exactly the skill we want to develop.</li>
+</ol>
+<p> </p>
+<p><strong>Problem Statement</strong></p>
+<p>Scaler is an online tech-versity offering intensive computer science &amp; Data Science courses through live classes delivered by tech leaders and subject matter experts. The meticulously structured program enhances the skills of software professionals by offering a modern curriculum with exposure to the latest technologies. It is a product by InterviewBit.</p>
+<p>You are working as a data scientist with the analytics vertical of Scaler, focused on profiling the best companies and job positions to work for from the Scaler database. You are provided with the information for a segment of learners and tasked to cluster them on the basis of their job profile, company, and other features. Ideally, these clusters should have similar characteristics.</p>
+<p> </p>
+<p><strong>Dataset:</strong></p>
+<p>Dataset Link: <em><strong><a href="https://drive.google.com/drive/folders/12E3CmKig9QVJ5N2Hh60_T6yTnj-XTuZk?usp=sharing" target="_blank" rel="noopener">scaler clustering </a></strong></em></p>
+<p> </p>
+<p><strong>Data Dictionary:</strong></p>
+<ul>
+<li>‘Unnamed 0’ - Index of the dataset</li>
+<li>Email_hash - Anonymised Personal Identifiable Information (PII)</li>
+<li>Company_hash - This represents an anonymized identifier for the company, which is the current employer of the learner.</li>
+<li>orgyear - Employment start date</li>
+<li>CTC - Current CTC</li>
+<li>Job_position - Job profile in the company</li>
+<li>CTC_updated_year - Year in which CTC got updated (Yearly increments, Promotions)</li>
+</ul>
+<p> </p>
+<p> </p>
+<p><strong>Concept Used: </strong></p>
+<ul>
+<li>Manual Clustering</li>
+<li>Unsupervised Clustering - K- means, Hierarchical Clustering</li>
+</ul>
+<p> </p>
+<p><strong>What does “good” look like?</strong></p>
+<ul>
+<li>Import the dataset and do usual exploratory data analysis steps like checking the structure &amp; characteristics of the dataset</li>
+<li>Checking unique emails and frequency of occurrence of the same email hash in the data. Recording observation and inference, wherever necessary.</li>
+<li>Checking for missing values and Prepare data for KNN/ Mean Imputation.</li>
+<li>You may have to remove special characters from the dataset by using Regex
+<ul>
+<li>Don’t worry if you haven’t used that before. The syntax is quite simple and intuitive</li>
+<li>Code: 
+<pre>mystring='\tAirtel X Labs'<br>re.sub('[^A-Za-z0-9 ]+', '', mystring)</pre>
+</li>
+</ul>
+</li>
+<li>Checking for duplicates in the dataset and drop them</li>
+<li>Making some <strong>new features</strong> like adding ‘Years of Experience’ column by subtracting orgyear from current year</li>
+<li><strong>Manual Clustering</strong> on the basis of learner’s  company, job position and years of experience
+<ul>
+<li>Getting the 5 point summary of CTC (mean, median, max, min, count etc) on the basis of  Company, Job Position, Years of Experience</li>
+<li>Merging the same with original dataset carefully and creating some flags showing learners with CTC greater than the Average of their Company’s department having same Years of Experience - Call that flag designation with values [1,2,3]</li>
+<li>Doing above analysis at Company &amp; Job Position level. Name that flag Class with values [1,2,3]</li>
+<li>Repeating the same analysis at the Company level. Name that flag Tier with values [1,2,3]</li>
+</ul>
+</li>
+<li>Based on the manual clustering done so far, answering few questions like:
+<ul>
+<li>Top 10 employees (earning more than most of the employees in the company) - Tier 1
+<ul>
+<li>Top 10 employees of data science in each company earning more than their peers - Class 1</li>
+<li>Bottom 10 employees of data science in each company earning less than their peers - Class 3</li>
+</ul>
+</li>
+<li>Bottom 10 employees (earning less than most of the employees in the company)- Tier 3</li>
+<li>Top 10 employees in each company - X department - having 5/6/7 years of experience earning more than their peers - Tier X</li>
+<li>Top 10 companies (based on their CTC)</li>
+<li>Top 2 positions in every company (based on their CTC)</li>
+</ul>
+</li>
+<li>Data processing for Unsupervised clustering - Label encoding/ One- hot encoding, Standardization of data</li>
+<li><strong>Unsupervised Learning - Clustering</strong>
+<ul>
+<li>Checking clustering tendency</li>
+<li>Elbow method</li>
+<li>K-means clustering</li>
+<li>Hierarchical clustering (you can do this on a sample of the dataset if your process is taking time)</li>
+</ul>
+</li>
+<li>Insights from Unsupervised Clustering</li>
+<li>Provide actionable Insights &amp; Recommendations for the Business.</li>
+</ul>
+<p> </p>
+<p><strong>Evaluation Criteria (100 Points):</strong></p>
+<ol>
+<li>Define Problem Statement and perform Exploratory Data Analysis <strong>(10 points)</strong>
+<ul>
+<li>Definition of problem (as per given problem statement with additional views)</li>
+<li>Observations on shape of data, data types of all the attributes, conversion of categorical attributes to 'category' (If required) , missing value detection, statistical summary.</li>
+<li>Univariate Analysis (distribution plots of all the continuous variable(s) barplots/countplots of all the categorical variables)</li>
+<li>Bivariate Analysis (Relationships between important variables such as workday and count, season and count, weather and count.</li>
+<li>Illustrate the insights based on EDA
+<ul>
+<li>Comments on range of attributes, outliers of various attributes</li>
+<li>Comments on the distribution of the variables and relationship between them</li>
+<li>Comments for each univariate and bivariate plots</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data Pre-processing: <strong>(30 Points)</strong>
+<ul>
+<li>Mean/ KNN Imputation </li>
+<li>Regex for cleaning company names</li>
+<li>Standardization &amp; Encoding</li>
+</ul>
+</li>
+<li>Manual Clustering:  <strong>(30 Points)</strong>
+<ol>
+<li>Creating Designation Flag &amp; Insights</li>
+<li>Creating Class Flag &amp; Insights</li>
+<li>Creating Tier Flag &amp; Insights</li>
+</ol>
+</li>
+<li>Unsupervised learning: <strong>(20 Points)</strong>
+<ol>
+<li>Checking clustering tendency, Elbow method &amp; K- means clustering</li>
+<li>Hierarchical Clustering</li>
+</ol>
+</li>
+<li>Actionable Insights &amp; Recommendations <strong>(10 Points)</strong></li>
+</ol>
+<p> </p>
+<p><strong>Submission Process:</strong></p>
+<ul>
+<li>Type your insights and recommendations in the text editor.</li>
+<li>Convert your jupyter notebook into PDF (Save as PDF using Chrome browser’s Print command), upload it in your Google Drive (set the permission to allow public access), and paste that link in the text editor.</li>
+<li>Optionally, you may add images/graphs in the text editor by taking screenshots or saving matplotlib graphs using plt.savefig(...).</li>
+<li>After submitting, you will not be allowed to edit your submission.</li>
+<li>Please ensure that the <strong>submission PDF must not exceed 50 pages.</strong></li>
+</ul></div></div></div><div data-testid="backdrop" class="sr-backdrop"></div><div class="sr-modal sr-modal--large active-job skills-modal"><a class="tappable sr-modal__close-alt no-highlight" aria-label="close"><i class="icon-close"></i></a><div class="sr-modal__body"><div class="cr-p-statement-modal-image"><img></div></div></div></div></div></div></div>
