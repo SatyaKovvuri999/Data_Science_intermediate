@@ -5,3 +5,7 @@ source mlops_env/bin/activate #not working
 pip install streamlit
 
 streamlit hello
+
+streamlit run yourscript.py
+
+pip install yfinance
