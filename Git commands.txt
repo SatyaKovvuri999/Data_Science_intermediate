@@ -1,0 +1,15 @@
+git init
+
+git remote -v
+
+git remote add origin https://github.com/SatyaKovvuri999/Data_Science_intermediate.git
+
+git pull origin master
+
+git status
+
+git add .
+
+git commit -m "Files added"
+
+git push origin master
