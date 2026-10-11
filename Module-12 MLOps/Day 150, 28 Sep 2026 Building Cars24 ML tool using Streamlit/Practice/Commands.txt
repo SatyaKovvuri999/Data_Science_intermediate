@@ -1,0 +1,7 @@
+python -m venv mlops_env
+
+source mlops_env/bin/activate #not working
+
+pip install streamlit
+
+streamlit hello
