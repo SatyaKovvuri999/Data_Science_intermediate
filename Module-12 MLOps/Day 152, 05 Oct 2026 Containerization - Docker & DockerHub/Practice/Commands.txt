@@ -1,0 +1,29 @@
+python -m venv mlops_env
+
+source mlops_env/bin/activate #not working
+
+pip install FLASK
+
+flask --app hello.py run
+
+python hello.py # Debugger Mode
+
+curl -X POST http://127.0.0.1:5000/predict # To call POST method
+
+pip freeze > requirements.txt
+
+docker build . -t flask_loan_app
+
+docker images
+
+docker run -p 8000:5000 flask_loan_app
+
+docker run -p 8000:5000 -d flask_loan_app # Will run in background
+
+docker tag flask_loan_app:latest kashish45/dismal-oct26:tagname
+
+docker push kashish45/dismal-oct26:latest
+
+docker pull kashish45/dismal-oct26:latest
+
+docker run -p 8000:5000 flask_loan_app:latest kashish45/dismal-oct26:tagname

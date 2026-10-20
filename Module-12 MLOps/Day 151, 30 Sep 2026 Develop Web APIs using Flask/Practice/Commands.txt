@@ -9,3 +9,5 @@ flask --app hello.py run
 python hello.py # Debugger Mode
 
 curl -X POST http://127.0.0.1:5000/predict # To call POST method
+
+pip freeze > requirements.txt
