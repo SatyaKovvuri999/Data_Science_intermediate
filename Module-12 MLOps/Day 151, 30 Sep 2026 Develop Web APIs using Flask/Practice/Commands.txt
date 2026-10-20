@@ -1,0 +1,11 @@
+python -m venv mlops_env
+
+source mlops_env/bin/activate #not working
+
+pip install FLASK
+
+flask --app hello.py run
+
+python hello.py # Debugger Mode
+
+curl -X POST http://127.0.0.1:5000/predict # To call POST method
